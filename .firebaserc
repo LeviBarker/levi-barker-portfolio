@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "levi-barker-portfolio": {
+      "hosting": {
+        "angular-fire": [
+          "levi-barker-portfolio"
+        ]
+      }
+    }
+  }
+}
