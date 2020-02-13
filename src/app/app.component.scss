@@ -1,0 +1,22 @@
+$navigation-height: 64px;
+$footer-height: 128px;
+
+#app-container{
+	background-color: yellow;
+	height: 100%;
+	#app-navigation{
+		height:	$navigation-height;
+		line-height: $navigation-height;
+		padding: 0 16px;
+	}
+	#app-content{
+		height: calc(100% - #{$navigation-height});
+	}
+}
+#app-footer{
+	background-color: black;
+	color: white;
+	height: $footer-height;
+	text-align: center;
+	padding: 16px 0;
+}

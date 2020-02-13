@@ -6,12 +6,17 @@ import 'firebase/firestore';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   projects$: Observable<any[]>;
   constructor(/*firestore: AngularFirestore*/db: AngularFireDatabase) {
     // this.projects$ = firestore.collection('projects').valueChanges();
     this.projects$ = db.list('projects').valueChanges();
+  }
+  
+  openURL(url: string){
+  	alert(`Open ${url}`);
   }
 }

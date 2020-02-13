@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "angular-fire"
+  "defaultProject": "angular-fire",
+  "cli": {
+    "analytics": false
+  }
 }

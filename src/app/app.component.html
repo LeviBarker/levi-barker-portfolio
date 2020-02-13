@@ -1,5 +1,12 @@
-<ul>
-  <li *ngFor="let project of projects$ | async">
-    {{ project.name }}
-  </li>
-</ul>
+<div id="app-container">
+	<nav id="app-navigation">Navigation</nav>
+	<div id="app-content">
+		<section>
+			About me...
+		</section>
+		<h2>Projects</h2>
+		<div class="projects" fxLayout="row nowrap" fxLayoutAlign="center center" fxLayoutGap="8px">
+			<app-project *ngFor="let project of projects$ | async" [project]="project"></app-project>
+  		</div>
+</div>
+<footer id="app-footer">Footer</footer>
