@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 	
-  @Input() project: Partial<{name: string, url: string, imageUrl: string}> = {};
+  @Input() project: Partial<{name: string, url: string, imageUrl: string, builtWith: string[]}> = {};
 
   constructor() { }
 

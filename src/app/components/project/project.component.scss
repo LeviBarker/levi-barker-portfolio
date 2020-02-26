@@ -1,5 +1,20 @@
 .app-project{
-	border: 2px solid red;
 	border-radius: 8px;
 	padding: 8px;
+	background-color: #f1f3f6;
+	box-shadow: 30px 30px 80px rgba(#3754aa, 0.1), -30px -30px 80px #fff, inset 4px 4px 20px rgba(255, 255, 255, 0.5);
+
+	.app-project-header{
+		margin: 8px 4px 12px;
+		.app-project-built-with-text{
+			text-align: right;
+			font-size: 10px;
+			margin-bottom: 4px;
+		}
+		.app-project-built-with-image{
+			height: 32px;
+			width: auto;
+			margin-left: 8px;
+		}
+	}
 }

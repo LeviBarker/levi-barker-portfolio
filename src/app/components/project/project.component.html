@@ -1,4 +1,10 @@
-<div class="app-project" (click)="openURL(project?.url)">
-    <span class="app-project-name">{{ project?.name }}</span>
+<div class="app-project" (click)="openURL(project?.url)" fxLayout="column">
+    <div class="app-project-header" fxLayout="row nowrap" fxLayoutAlign="space-between center">
+        <h3 class="app-project-name">{{ project?.name }}</h3>
+        <div fxLayout="row wrap" fxLayoutAlign="flex-end center">
+            <span class="app-project-built-with-text" fxFlex="100%">built with</span>
+            <img class="app-project-built-with-image" *ngFor="let imageUrl of project?.builtWith" [src]="imageUrl"/>
+        </div>
+    </div>
     <img class="app-project-image" [src]="project?.imageUrl" />
  </div>
