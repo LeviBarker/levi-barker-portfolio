@@ -1,6 +1,9 @@
 name: Build Angular and Deploy to Firebase Hosting
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
   build:
