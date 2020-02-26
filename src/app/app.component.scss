@@ -8,6 +8,10 @@ $footer-height: 128px;
 		height:	$navigation-height;
 		line-height: $navigation-height;
 		padding: 0 16px;
+		#app-logo{
+			height: 64px;
+			width: auto;
+		}
 	}
 	#app-content{
 		height: calc(100% - #{$navigation-height});
