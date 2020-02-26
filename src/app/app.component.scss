@@ -2,8 +2,8 @@ $navigation-height: 64px;
 $footer-height: 128px;
 
 #app-container{
-	background-color: #f1f3f6;
 	height: 100%;
+	overflow: auto;
 	#app-navigation{
 		height:	$navigation-height;
 		line-height: $navigation-height;
@@ -15,6 +15,9 @@ $footer-height: 128px;
 	}
 	#app-content{
 		height: calc(100% - #{$navigation-height});
+		.app-projects{
+			padding: 16px 0;
+		}
 	}
 }
 #app-footer{

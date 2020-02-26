@@ -11,6 +11,8 @@ import 'firebase/firestore';
 })
 export class AppComponent {
   projects$: Observable<any[]>;
+
+  // Using Realtime Database rather than Cloud Firestore
   constructor(/*firestore: AngularFirestore*/db: AngularFireDatabase) {
     // this.projects$ = firestore.collection('projects').valueChanges();
     this.projects$ = db.list('projects').valueChanges();

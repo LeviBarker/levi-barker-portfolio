@@ -3,12 +3,14 @@
 		<img id="app-logo" src="../assets/logo.svg" />
 	</nav>
 	<div id="app-content">
-		<section>
+		<section style="height: 100%">
 			About me...
 		</section>
-		<h2>Projects</h2>
-		<div class="projects" fxLayout="row nowrap" fxLayoutAlign="center center" fxLayoutGap="8px">
+		<div style="width: 100%; text-align: center; margin-bottom: 64px">
+			<h2>Projects</h2>
+		</div>
+		<div class="app-projects" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="8px">
 			<app-project *ngFor="let project of projects$ | async" [project]="project"></app-project>
   		</div>
 </div>
-<footer id="app-footer">Footer</footer>
+<!-- <footer id="app-footer">Footer</footer> -->
