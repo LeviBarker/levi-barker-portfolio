@@ -1,8 +1,11 @@
-<div class="app-project" (click)="openURL(project?.url)" fxLayout="column">
+<div class="app-project neumorphic" (click)="openURL(project?.url)" fxLayout="column">
     <div class="app-project-header" fxLayout="row nowrap" fxLayoutAlign="space-between center">
-        <h3 class="app-project-name">{{ project?.name }}</h3>
-        <div fxLayout="row wrap" fxLayoutAlign="flex-end center">
-            <span class="app-project-built-with-text" fxFlex="100%">built with</span>
+        <div fxLayout="column">
+            <h3 class="app-project-name">{{ project?.name }}</h3>
+            <span class="app-small-text">{{project?.linkDescription}}</span>
+        </div>
+        <div *ngIf="project?.builtWith?.length" fxLayout="row wrap" fxLayoutAlign="flex-end center">
+            <span class="app-project-built-with-text app-small-text" fxFlex="100%">built with</span>
             <img class="app-project-built-with-image" *ngFor="let imageUrl of project?.builtWith" [src]="imageUrl"/>
         </div>
     </div>
