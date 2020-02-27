@@ -15,6 +15,7 @@ $footer-height: 128px;
 	}
 	#app-content{
 		height: calc(100% - #{$navigation-height});
+    overflow: auto;
 		.app-projects{
 			padding: 16px 0;
 		}
