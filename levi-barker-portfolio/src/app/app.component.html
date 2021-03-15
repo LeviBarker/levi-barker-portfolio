@@ -24,22 +24,33 @@
     <h2>
       <span>Portfolio</span>
     </h2>
-    <nav class="portfolio-nav" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
-      <button matRipple>
-        Apps
-      </button>
-      <button>
-        UX Design
-      </button>
-      <button>
-        Graphic Design
-      </button>
-    </nav>
-    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="32px">
-      <mat-card style="width: 128px; height: 128px;" *ngFor="let card of [1,2,3,4]">
-        Test
-      </mat-card>
-    </div>
+    <mat-tab-group color="primary" backgroundColor="primary">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Apps
+        </ng-template>
+        <div style="padding: 16px">
+          <mat-card>
+            Test
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          UX Design
+        </ng-template>
+        <div style="padding: 16px">
+          <mat-card>
+            Test
+          </mat-card>
+        </div>
+      </mat-tab>
+       <mat-tab disabled>
+        <ng-template mat-tab-label>
+          Graphic Design (Coming Soon)
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </section>
 <section id="contact" class="section">
@@ -48,7 +59,7 @@
       Contact
     </h2>
   </div>
-  <form [formGroup]="formGroup" fxLayout="column" fxLayoutAlign="flex-start stretch" style="min-width: 256px">
+  <form fxLayout="column" fxLayoutAlign="flex-start stretch" style="min-width: 256px">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input formControlName="name" matInput/>

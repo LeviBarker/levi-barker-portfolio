@@ -53,6 +53,14 @@ $theme: mat-light-theme((color: (primary: $primary,
 // Include theme styles for Angular Material components.
 @include angular-material-theme($theme);
 
+.mat-tab-header{
+  border: none !important;
+}
+
+.mat-button{
+  font-family: 'Poppins', sans-serif !important;
+}
+
 .primary-text-color{
   color: mat-color($primary);
 }
@@ -95,6 +103,10 @@ $theme: mat-light-theme((color: (primary: $primary,
   }
 }
 
+#hero{
+  padding: 16px;
+}
+
 .section {
   padding: 64px 16px;
   display: flex;
@@ -118,18 +130,19 @@ $theme: mat-light-theme((color: (primary: $primary,
   }
 }
 
-nav {
-  button {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.25em;
-    border-bottom: 4px solid transparent;
-
-    &:hover {
-      border-bottom-color: mat-color($primary, default-contrast);
-    }
-  }
-}
+// nav {
+//   button {
+//     border: none;
+//     outline: none;
+//     background-color: transparent;
+//     cursor: pointer;
+//     font-family: 'Poppins', sans-serif !important;
+//     font-size: 1.25em;
+//     border-bottom: 4px solid transparent;
+//     transition-duration: 200ms;
+//     border-radius: 0;
+//     &:hover {
+//       border-bottom-color: mat-color($primary, default-contrast);
+//     }
+//   }
+// }
