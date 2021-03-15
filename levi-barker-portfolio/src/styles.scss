@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #434343;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+h1 {
+  font-size: 3.5em !important;
+  font-weight: 700 !important;
+}
+
+h2 {
+  font-size: 2.5em !important;
+  font-weight: 400 !important;
+}
+
+h3 {
+  font-size: 1.75em !important;
+  font-weight: 400 !important;
+}
+
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define your application's custom theme.
+$primary: mat-palette($mat-blue);
+$accent: mat-palette($mat-green, A200, A100, A400);
+$theme: mat-light-theme((color: (primary: $primary,
+      accent: $accent,
+    )));
+
+// Include theme styles for Angular Material components.
+@include angular-material-theme($theme);
+
+.primary-text-color{
+  color: mat-color($primary);
+}
+
+.logo-text{
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+#main-nav {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+
+  button {
+    color: mat-color($primary, default-contrast) !important;
+  }
+
+  div {
+    margin: 8px 16px;
+
+  }
+}
+
+.section {
+  padding: 64px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  &.primary-color{
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
+}
+
+.button-text-with-icon {
+  margin-left: 8px;
+
+  &.right {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+}
+
+nav {
+  button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.25em;
+    border-bottom: 4px solid transparent;
+
+    &:hover {
+      border-bottom-color: mat-color($primary, default-contrast);
+    }
+  }
+}
