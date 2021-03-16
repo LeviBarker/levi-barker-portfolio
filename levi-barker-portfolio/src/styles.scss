@@ -50,7 +50,7 @@ h4{
 
 // Define your application's custom theme.
 $primary: mat-palette($mat-blue);
-$accent: mat-palette($mat-green, A200, A100, A400);
+$accent: mat-palette($mat-grey, A200, A100, A400);
 $theme: mat-light-theme((color: (primary: $primary,
       accent: $accent,
     )));
@@ -122,6 +122,11 @@ $theme: mat-light-theme((color: (primary: $primary,
   &.primary-color{
     background-color: mat-color($primary);
     color: mat-color($primary, default-contrast);
+
+    .mat-form-field-outline, .mat-form-field-label{
+      color: #fff;
+    }
+
   }
 
 }
@@ -132,6 +137,58 @@ $theme: mat-light-theme((color: (primary: $primary,
   &.right {
     margin-left: 0;
     margin-right: 8px;
+  }
+}
+
+p {
+  a{
+    color: mat-color($primary);
+  }
+}
+
+.twitter{
+  cursor: pointer;
+  &:hover{
+    color: #00ACEE;
+  }
+}
+
+.instagram{
+  cursor: pointer;
+  &:hover{
+    color: #C13584;
+  }
+}
+
+.dribbble{
+  cursor: pointer;
+  &:hover{
+    color: #ea4c89;
+  }
+}
+
+.behance{
+  cursor: pointer;
+  &:hover{
+    color: #000;
+  }
+}
+
+.medium{
+  cursor: pointer;
+  &:hover{
+    color: #000;
+  }
+}
+
+#home-nav-button{
+  position: sticky;
+  left: 32px;
+  bottom: 32px;
+  transform: scale(0);
+  transition: transform 200ms ease-in-out;
+  &.active{
+    transform: scale(1);
   }
 }
 

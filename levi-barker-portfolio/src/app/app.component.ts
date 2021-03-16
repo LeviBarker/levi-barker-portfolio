@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faInstagram, faDribbble, faBehance, faMedium, } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +10,22 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+   if(window.scrollY){
+    this.showHomeNavButton = true;
+   } else {
+     this.showHomeNavButton = false;
+   }
+  }
+
+  showHomeNavButton: boolean = false;
+  twitter = faTwitter;
+  instagram = faInstagram;
+  dribbble = faDribbble;
+  behance = faBehance;
+  medium = faMedium;
 
   appCards: any[] = [
     {
@@ -40,11 +59,11 @@ export class AppComponent {
 
   scrollToElement($element: any): void {
     console.log($element);
-    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
   }
 
-  goTo(location: string){
-    window.location.href = window.location.href.split("#")[0] + location;
+  goTo(location: string) {
+    window.open(location);
   }
 
 }

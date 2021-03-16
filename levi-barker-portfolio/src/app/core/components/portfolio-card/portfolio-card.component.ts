@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import * as EventEmitter from 'node:events';
 
 @Component({
   selector: 'app-portfolio-card',

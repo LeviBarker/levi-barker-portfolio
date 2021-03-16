@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "levi-barker-portfolio": {
+      "hosting": {
+        "levi-barker-portfolio": [
+          "levi-barker-portfolio"
+        ]
+      }
+    }
+  }
+}

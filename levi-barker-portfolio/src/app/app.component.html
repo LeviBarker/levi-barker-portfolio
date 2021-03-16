@@ -1,23 +1,58 @@
-<nav id="main-nav" fxLayout="row" fxLayoutAlign="space-between center">
-  <span class="logo-text">levi<span class="primary-text-color">barker</span>.dev</span>
+<nav #nav id="main-nav" fxLayout="row" fxLayoutAlign="space-between center">
+  <div>
+    <button mat-icon-button fxHide fxShow.xs>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo-text">levi<span class="primary-text-color">barker</span>.dev</span>
+  </div>
   <div class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
     <button mat-button (click)="scrollToElement(portfolio)">
       Portfolio
     </button>
+    <button mat-button (click)="scrollToElement(about)">
+      About
+    </button>
     <button mat-button (click)="scrollToElement(contact)">
       Contact
     </button>
-    <button mat-stroked-button color="primary">
+    <button mat-stroked-button color="primary" [matMenuTriggerFor]="resumeMenu">
       <span class="button-text-with-icon right">Resume/CV</span>
       <mat-icon>launch</mat-icon>
     </button>
+    <mat-menu #resumeMenu="matMenu">
+      <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" (click)="goTo('https://www.linkedin.com/in/barkerlevi')">
+        <img style="height: 16px;" src="../assets/LI-In-Bug.png"/>
+        <span>Linkedin</span>
+      </button>
+      <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+        <img style="height: 16px;" src="../assets/PDF_24.png"/>
+        <span>PDF Resume</span>
+      </button>
+    </mat-menu>
   </div>
 </nav>
 <section id="hero" fxLayout="row" fxLayoutAlign="center center">
-  <div>
-    <h1>Hi, I'm <span class="primary-text-color">Levi</span></h1>
-    <p style="min-width: 256px; max-width: 560px">Im a full-stack web developer, UX & graphic designer and photographer
-      from Mandan, ND.</p>
+  <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="36px">
+    <img style="border-radius: 50%; width: 128px; box-shadow: 0 4px 8px rgba(128, 128, 128, 0.486)" src="../assets/_DSC0232.jpg"/>
+    <div>
+      <h1>Hi, I'm <span class="primary-text-color">Levi</span></h1>
+      <p style="min-width: 256px; max-width: 560px">Im a full-stack web developer, UX & graphic designer and photographer
+        from Mandan, ND. I'm passionate about finding creative solutions to solve human problems.
+        way.</p>
+        <div fxLayout="row" fxLayoutGap="24px">
+          <fa-icon class="twitter" [icon]="twitter" size="2x" (click)="goTo('https://twitter.com')"></fa-icon>
+          <fa-icon class="instagram" [icon]="instagram" size="2x" (click)="goTo('https://instagram.com')"></fa-icon>
+          <fa-icon class="dribbble" [icon]="dribbble" size="2x" (click)="goTo('https://dribbble.com')"></fa-icon>
+          <fa-icon class="behance" [icon]="behance" size="2x" (click)="goTo('https://behance.com')"></fa-icon>
+          <fa-icon class="medium" [icon]="medium" size="2x" (click)="goTo('https://medium.com')"></fa-icon>
+        </div>
+    </div>
+  </div>
+  <div style="margin: 32px; position: absolute; width: 100%; bottom: 0; text-align: center">
+    <button mat-button (click)="scrollToElement(portfolio)">
+      See my work here<br/>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
   </div>
 </section>
 <section #portfolio class="section primary-color">
@@ -30,20 +65,20 @@
         <ng-template mat-tab-label>
           Apps
         </ng-template>
-        <div style="padding: 16px" fxLayout="row" fxLayoutAlign="flex-start" fxLayoutGap="16px" >
-          <app-portfolio-card *ngFor="let card of appCards" [title]="card.title"
-          [imageSrc]="card.imageSrc" [imageAlt]="card.imageAlt"
-          [description]="card.description" (openClicked)="card.clickCallback()"></app-portfolio-card>
+        <div style="padding: 16px" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+          <app-portfolio-card *ngFor="let card of appCards" [title]="card.title" [imageSrc]="card.imageSrc"
+            [imageAlt]="card.imageAlt" [description]="card.description" (openClicked)="card.clickCallback()">
+          </app-portfolio-card>
         </div>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           UX Design
         </ng-template>
-        <div style="padding: 16px" fxLayout="row" fxLayoutAlign="flex-start" fxLayoutGap="16px" >
-          <app-portfolio-card *ngFor="let card of uxCards" [title]="card.title"
-          [imageSrc]="card.imageSrc" [imageAlt]="card.imageAlt"
-          [description]="card.description" (openClicked)="card.clickCallback()"></app-portfolio-card>
+        <div style="padding: 16px" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+          <app-portfolio-card *ngFor="let card of uxCards" [title]="card.title" [imageSrc]="card.imageSrc"
+            [imageAlt]="card.imageAlt" [description]="card.description" (openClicked)="card.clickCallback()">
+          </app-portfolio-card>
         </div>
       </mat-tab>
       <mat-tab disabled>
@@ -54,28 +89,44 @@
     </mat-tab-group>
   </div>
 </section>
-<section #contact class="section">
+<section #about class="section">
+  <div class="section-header">
+    <h2>
+      About
+    </h2>
+  </div>
+  <p style="max-width: 560px;">My name is Levi Barker, and I have been a full-stack web developer since 2016.  I've always enjoyed both the creative and technical parts of software development, so I feel just as home in a terminal window as I do with Adobe Illustrator. Currently, I'm going through Googles' UX Designer certificfation in hopes of learning to solve human problems through software.</p>
+  <p style="max-width: 560px;">I have a beautiful wife and daughter with another baby on the way.  I love spending time with them any chance I get. My wife and I also have our own photography/videography business (<a href="https://youmeandhe.com">https://youmeandhe.com</a>).</p>
+</section>
+
+<section #contact class="section primary-color">
   <div class="section-header">
     <h2>
       Contact
     </h2>
   </div>
   <form fxLayout="column" fxLayoutAlign="flex-start stretch" style="min-width: 256px">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" floatLabel="always">
       <mat-label>Name</mat-label>
       <input formControlName="name" matInput />
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" floatLabel="always">
       <mat-label>Email</mat-label>
       <input formControlName="email" matInput />
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" floatLabel="always">
       <mat-label>Message</mat-label>
       <textarea matInput formControlName="message"></textarea>
     </mat-form-field>
-    <button mat-stroked-button>
+    <button mat-button>
       <mat-icon>send</mat-icon>
       Send
     </button>
   </form>
+  <footer style="padding: 32px;">
+    <span class="mat-caption">Copyright Levi Barker 2021</span>
+  </footer>
 </section>
+<button mat-fab id="home-nav-button" [class.active]="showHomeNavButton" (click)="scrollToElement(nav)">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</button>
