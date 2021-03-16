@@ -1,10 +1,10 @@
 <nav id="main-nav" fxLayout="row" fxLayoutAlign="space-between center">
   <span class="logo-text">levi<span class="primary-text-color">barker</span>.dev</span>
   <div class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
-    <button mat-button (click)="goTo('#portfolio')">
+    <button mat-button (click)="scrollToElement(portfolio)">
       Portfolio
     </button>
-    <button mat-button (click)="goTo('#contact')">
+    <button mat-button (click)="scrollToElement(contact)">
       Contact
     </button>
     <button mat-stroked-button color="primary">
@@ -16,36 +16,37 @@
 <section id="hero" fxLayout="row" fxLayoutAlign="center center">
   <div>
     <h1>Hi, I'm <span class="primary-text-color">Levi</span></h1>
-    <p style="min-width: 256px; max-width: 560px">Im a full-stack web developer, UX & graphic designer and photographer from Mandan, ND.</p>
+    <p style="min-width: 256px; max-width: 560px">Im a full-stack web developer, UX & graphic designer and photographer
+      from Mandan, ND.</p>
   </div>
 </section>
-<section id="portfolio" class="section primary-color">
+<section #portfolio class="section primary-color">
   <div class="section-header">
     <h2>
       <span>Portfolio</span>
     </h2>
-    <mat-tab-group color="primary" backgroundColor="primary">
+    <mat-tab-group mat-align-tabs="center" style="width: 100%" color="primary" backgroundColor="primary">
       <mat-tab>
         <ng-template mat-tab-label>
           Apps
         </ng-template>
-        <div style="padding: 16px">
-          <mat-card>
-            Test
-          </mat-card>
+        <div style="padding: 16px" fxLayout="row" fxLayoutAlign="flex-start" fxLayoutGap="16px" >
+          <app-portfolio-card *ngFor="let card of appCards" [title]="card.title"
+          [imageSrc]="card.imageSrc" [imageAlt]="card.imageAlt"
+          [description]="card.description" (openClicked)="card.clickCallback()"></app-portfolio-card>
         </div>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           UX Design
         </ng-template>
-        <div style="padding: 16px">
-          <mat-card>
-            Test
-          </mat-card>
+        <div style="padding: 16px" fxLayout="row" fxLayoutAlign="flex-start" fxLayoutGap="16px" >
+          <app-portfolio-card *ngFor="let card of uxCards" [title]="card.title"
+          [imageSrc]="card.imageSrc" [imageAlt]="card.imageAlt"
+          [description]="card.description" (openClicked)="card.clickCallback()"></app-portfolio-card>
         </div>
       </mat-tab>
-       <mat-tab disabled>
+      <mat-tab disabled>
         <ng-template mat-tab-label>
           Graphic Design (Coming Soon)
         </ng-template>
@@ -53,7 +54,7 @@
     </mat-tab-group>
   </div>
 </section>
-<section id="contact" class="section">
+<section #contact class="section">
   <div class="section-header">
     <h2>
       Contact
@@ -62,11 +63,11 @@
   <form fxLayout="column" fxLayoutAlign="flex-start stretch" style="min-width: 256px">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input formControlName="name" matInput/>
+      <input formControlName="name" matInput />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input formControlName="email" matInput/>
+      <input formControlName="email" matInput />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Message</mat-label>

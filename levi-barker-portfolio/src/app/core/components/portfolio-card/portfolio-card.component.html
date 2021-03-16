@@ -1,0 +1,14 @@
+<mat-card style="width: 256px;">
+  <img mat-card-image [src]="imageSrc"
+    [alt]="imageAlt">
+  <mat-card-content>
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="onOpenClicked()" fxLayout="row" fxLayoutAlign="flex-start center">
+      <span style="margin-right: 8px;">Open</span>
+      <mat-icon>launch</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

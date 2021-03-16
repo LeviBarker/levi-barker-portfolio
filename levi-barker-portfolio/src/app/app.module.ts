@@ -12,10 +12,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
+import { PortfolioCardComponent } from './core/components/portfolio-card/portfolio-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PortfolioCardComponent
   ],
   imports: [
     BrowserModule,
