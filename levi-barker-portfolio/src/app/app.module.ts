@@ -14,6 +14,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 import { PortfolioCardComponent } from './core/components/portfolio-card/portfolio-card.component';
 
 @NgModule({
@@ -31,7 +35,10 @@ import { PortfolioCardComponent } from './core/components/portfolio-card/portfol
     MatFormFieldModule,
     MatTabsModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatTooltipModule,
     FontAwesomeModule,
+    MatListModule,
     FlexLayoutModule
   ],
   providers: [],

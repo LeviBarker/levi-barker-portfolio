@@ -12,6 +12,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: #434343;
+  overflow: hidden;
 }
 
 h1,
@@ -77,11 +78,11 @@ $theme: mat-light-theme((color: (primary: $primary,
 }
 
 #main-nav {
-  position: absolute;
   width: 100%;
   height: 64px;
   padding: 0 32px;
   box-sizing: border-box;
+  z-index: 999;
 }
 
 .section-header {
@@ -108,8 +109,13 @@ $theme: mat-light-theme((color: (primary: $primary,
   }
 }
 
+#inner-app-container{
+  height: 100vh;
+  overflow: auto;
+}
+
 #hero{
-  padding: 16px;
+  position: relative;
 }
 
 .section {
@@ -182,29 +188,13 @@ p {
 }
 
 #home-nav-button{
-  position: sticky;
+  position: absolute;
   left: 32px;
   bottom: 32px;
   transform: scale(0);
+  z-index: 9999;
   transition: transform 200ms ease-in-out;
   &.active{
     transform: scale(1);
   }
 }
-
-// nav {
-//   button {
-//     border: none;
-//     outline: none;
-//     background-color: transparent;
-//     cursor: pointer;
-//     font-family: 'Poppins', sans-serif !important;
-//     font-size: 1.25em;
-//     border-bottom: 4px solid transparent;
-//     transition-duration: 200ms;
-//     border-radius: 0;
-//     &:hover {
-//       border-bottom-color: mat-color($primary, default-contrast);
-//     }
-//   }
-// }

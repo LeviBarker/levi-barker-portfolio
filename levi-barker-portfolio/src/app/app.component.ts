@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -10,15 +10,6 @@ import { faTwitter, faInstagram, faDribbble, faBehance, faMedium, } from '@forta
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
-   if(window.scrollY){
-    this.showHomeNavButton = true;
-   } else {
-     this.showHomeNavButton = false;
-   }
-  }
 
   showHomeNavButton: boolean = false;
   twitter = faTwitter;
@@ -57,13 +48,19 @@ export class AppComponent {
     message: new FormControl()
   });
 
-  scrollToElement($element: any): void {
-    console.log($element);
+  scrollToElement($element: any, sidenav?: any): void {
+    if(sidenav){
+      sidenav.close();
+    }
     $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
   }
 
   goTo(location: string) {
     window.open(location);
+  }
+
+  onContainerScroll(event: any){
+    this.showHomeNavButton = event.target.scrollTop;
   }
 
 }
