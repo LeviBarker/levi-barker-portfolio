@@ -91,9 +91,9 @@
                 </app-portfolio-card>
               </div>
             </mat-tab>
-            <mat-tab>
+            <mat-tab disabled>
               <ng-template mat-tab-label>
-                UX Design
+                UX Design (Coming Soon)
               </ng-template>
               <div style="padding: 32px" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
                 <app-portfolio-card *ngFor="let card of uxCards" [title]="card.title" [imageSrc]="card.imageSrc"
@@ -118,7 +118,50 @@
         <p style="max-width: 560px; padding: 0 32px;">
           My name is Levi Barker, and I have been a full-stack web developer since 2016.  I'm currently earning a certificate in UX Design through Google's UX Designer program.
           Creating software is a surprisingly human thing.  Although I work with code on a screen that turns into 1s and 0s, the end goal is to provide a tool to benefit people.  My goal is to provide exceptional software through the combination of technical and human design.</p>
-      </section>
+
+          <div style="margin-top: 32px;">
+
+            <h3>Experience</h3>
+            <div style="display: flex; align-items: center;">
+              <img src="../assets/capturis.jpg" style="width: 64px;"/>
+              <div style="margin-left: 32px; display: flex; flex-direction: column">
+                <h4 style="margin: 0;">Software Developer</h4>
+                <span class="primary-text-color">Capturis - a Conservice company</span>
+                <span class="mat-caption">(2015 - Present)</span>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 32px">Education</h3>
+            <div style="display: flex; align-items: center;">
+              <img src="../assets/dsu.jpg" style="height: 64px;"/>
+              <div style="margin-left: 32px; display: flex; flex-direction: column">
+                <h4 style="margin: 0;">Bachelor's Degree in Computer Science</h4>
+                <span class="primary-text-color">Dickinson State University</span>
+                <span class="mat-caption">(2015 - 2017)</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 16px;">
+              <img src="../assets/bsc.jpg" style="height: 64px;"/>
+              <div style="margin-left: 32px; display: flex; flex-direction: column">
+                <h4 style="margin: 0;">Associate's Degree in Computer Science</h4>
+                <span class="primary-text-color">Bismarck State College</span>
+                <span class="mat-caption">(2013 - 2015)</span>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 32px">Certificates</h3>
+            <div style="display: flex; align-items: center;">
+              <img src="../assets/google_design.jpg" style="height: 64px;"/>
+              <div style="margin-left: 32px; display: flex; flex-direction: column">
+                <h4 style="margin: 0;">Google UX Design Professional Certificate</h4>
+                <span class="primary-text-color">Coursera</span>
+                <span class="mat-caption">(In Progress)</span>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
 
       <section #contact class="section primary-color">
         <div class="section-header">

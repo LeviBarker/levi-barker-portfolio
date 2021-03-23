@@ -25,7 +25,7 @@ export class AppComponent {
       imageSrc: '../assets/Artboard 1.png',
       imageAlt: 'Photography Pricing Calculator App',
       clickCallback: () => {
-        alert('clicked');
+        window.open('https://photography-calculator.firebaseapp.com/', '_blank');
       }
     }
   ]
