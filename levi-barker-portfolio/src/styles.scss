@@ -125,12 +125,18 @@ $theme: mat-light-theme((color: (primary: $primary,
   justify-content: flex-start;
   align-items: center;
 
+  background-color: #fff;
+
   &.primary-color{
     background-color: mat-color($primary);
     color: mat-color($primary, default-contrast);
 
     .mat-form-field-outline, .mat-form-field-label{
       color: #fff;
+    }
+
+    .mat-input-element{
+      caret-color: #fff;
     }
 
   }
@@ -170,6 +176,13 @@ p {
   cursor: pointer;
   &:hover{
     color: #ea4c89;
+  }
+}
+
+.stackoverflow{
+  cursor: pointer;
+  &:hover{
+    color: #daa42f;
   }
 }
 

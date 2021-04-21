@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <button mat-button (click)="goHome()">
+    <mat-icon>chevron_left</mat-icon>
+    <span>Go Back</span>
+  </button>
+</mat-toolbar>
+<div fxLayout="column" fxLayoutAlign="flex-start center" style="height: calc(100vh - 64px); padding: 32px 16px;">
+  <article style="max-width: 600px;" *ngIf="article else loading">
+    <markdown [src]="article.markdownURL"></markdown>
+  </article>
+
+  <ng-template #loading>
+    <mat-spinner size="48"></mat-spinner>
+  </ng-template>
+</div>
+

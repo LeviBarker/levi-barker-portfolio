@@ -1,0 +1,228 @@
+<main id="inner-app-container" (scroll)="onContainerScroll($event)">
+  <section id="hero" fxLayout="column" fxLayoutAlign="flex-start center">
+    <img src="../assets/Asset 1left.svg" style="height: 100%; position: absolute; left: -32px; bottom: -32px"/>
+    <img src="../assets/Asset 2right.svg" fxHide.xs style="height: 100%; position: absolute; right: -32px; bottom: -32px"/>
+    <nav fxFlex="64px" #nav id="main-nav" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="16px">
+        <button mat-icon-button fxHide fxShow.xs>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="logo-text">levi<span class="primary-text-color">barker</span>.com</span>
+      </div>
+      <div class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
+        <button mat-button (click)="scrollToElement(portfolio)">
+          Portfolio
+        </button>
+        <button mat-button (click)="scrollToElement(about)">
+          About
+        </button>
+        <button mat-button (click)="scrollToElement(contact)">
+          Contact
+        </button>
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="resumeMenu">
+          <span class="button-text-with-icon right">Resume/CV</span>
+          <mat-icon>launch</mat-icon>
+        </button>
+        <mat-menu #resumeMenu="matMenu">
+          <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" (click)="goTo('https://www.linkedin.com/in/barkerlevi')">
+            <img style="height: 16px;" src="../assets/LI-In-Bug.png"/>
+            <span>Linkedin</span>
+          </button>
+          <button disabled mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+            <img style="height: 16px;" src="../assets/PDF_24.png"/>
+            <span>PDF Resume (Coming Soon)</span>
+          </button>
+        </mat-menu>
+      </div>
+    </nav>
+    <div fxFlex="auto" fxLayout="column" fxLayoutAlign="center center" style="position: relative;">
+      <div fxLayout="row" fxLayout.xs="column" style="padding: 0 32px;" fxLayoutAlign="flex-start center" fxLayoutGap="36px" >
+        <img *ngIf="!showCode" style="border-radius: 50%; width: 128px; box-shadow: 0 4px 8px rgba(128, 128, 128, 0.486)" src="../assets/portrait.jpg"/>
+        <div style="background-color: rgba(255, 255, 255, 0.418); border-radius: 16px;">
+          <div style="display: flex;">
+            <h1>Hi, I'm <span class="primary-text-color">Levi</span></h1>
+            <button style="margin-left: 16px; transform: translateY(-6px)" [matTooltip]="showCode ? 'Hide' : 'Show' + ' Code'" matTooltipPosition="after" (click)="toggleShowCode()" mat-icon-button><mat-icon>{{showCode ? 'code_off': 'code'}}</mat-icon></button>
+          </div>
+          <p *ngIf="!showCode" style="min-width: 256px; max-width: 560px; margin: 32px 0;">I'm a full-stack web developer, UX & graphic designer and photographer
+            from Mandan, North Dakota. I'm passionate about finding creative solutions to solve human problems.</p>
+            <div style="min-width: 256px; max-width: 560px; margin: 32px 0;" *ngIf="showCode" markdown ngPreserveWhitespaces>
+              ```typescript
+                const name = 'Levi Barker';
+                let location = 'Mandan, ND';
+                let whatIDo = [
+                  'Full-stack Development',
+                  'UX Design',
+                  'Graphic Design'
+                ];
+                let intro = `👋 I'm passionate about
+                finding creative solutions that solve
+                human problems.`;
+              ```
+            </div>
+            <div fxLayout="row" [fxLayoutAlign]="showCode ? 'center' : 'flex-start'" fxLayoutGap="24px">
+              <fa-icon class="twitter" [icon]="twitter" size="2x" (click)="goTo('https://twitter.com/barkerlevi4')"></fa-icon>
+              <fa-icon class="instagram" [icon]="instagram" size="2x" (click)="goTo('https://www.instagram.com/levibark4/')"></fa-icon>
+              <fa-icon class="dribbble" [icon]="dribbble" size="2x" (click)="goTo('https://dribbble.com/LeviBarker')"></fa-icon>
+              <fa-icon class="medium" [icon]="codepen" size="2x" (click)="goTo('https://medium.com/@dev.levibarker')"></fa-icon>
+              <fa-icon class="stackoverflow" [icon]="stackOverflow" size="2x" (click)="goTo('https://medium.com/@dev.levibarker')"></fa-icon>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="64px" style="margin: 32px; width: 100%; bottom: 0; text-align: center">
+      <button mat-button (click)="scrollToElement(portfolio)">
+        See my work here<br/>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+  </section>
+  <section #portfolio class="section primary-color">
+    <div class="section-header">
+      <h2>
+        <span>Portfolio</span>
+      </h2>
+      <div fxLayout="row wrap" fxLayoutAlign="center flex-start">
+        <app-portfolio-card style="padding: 8px;" *ngFor="let card of (projects$ | async)" [title]="card.title" [imageSrc]="card.headerImgURL"
+        [imageAlt]="'test'" [description]="card.summary">
+        <button mat-stroked-button color="primary" *ngFor="let link of card.links" (click)="goToLink(link)">
+          <mat-icon *ngIf="link.icon" style="margin-right: 8px;">{{link.icon}}</mat-icon>
+          <span>{{link.name}}</span>
+        </button>
+      </app-portfolio-card>
+      </div>
+
+      <!-- <mat-tab-group mat-align-tabs="center" style="width: 100%" color="primary" backgroundColor="primary">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            Apps
+          </ng-template>
+          <div style="padding: 32px" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+            <app-portfolio-card *ngFor="let card of appCards" [title]="card.title" [imageSrc]="card.imageSrc"
+              [imageAlt]="card.imageAlt" [description]="card.description" (openClicked)="card.clickCallback()">
+            </app-portfolio-card>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            UX Design
+          </ng-template>
+          <div style="padding: 32px" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+            <app-portfolio-card *ngFor="let card of uxCards" [title]="card.title" [imageSrc]="card.imageSrc"
+              [imageAlt]="card.imageAlt" [description]="card.description" (openClicked)="card.clickCallback()">
+            </app-portfolio-card>
+          </div>
+        </mat-tab>
+        <!-- <mat-tab disabled>
+          <ng-template mat-tab-label>
+            Graphic Design (Coming Soon)
+          </ng-template>
+        </mat-tab> -->
+      <!-- </mat-tab-group> -->
+    </div>
+  </section>
+  <section #about class="section">
+    <div class="section-header">
+      <h2>
+        About
+      </h2>
+    </div>
+    <p style="max-width: 560px; padding: 0 32px;">
+      My name is Levi Barker, and I have been a full-stack web developer since 2016.  I'm currently earning a certificate in UX Design through Google's UX Designer program.
+      Creating software is a surprisingly human thing.  Although I work with code on a screen that turns into 1s and 0s, the end goal is to provide a tool to benefit people.  My goal is to provide exceptional software through the combination of technical and human design.</p>
+
+      <div style="margin: 32px; max-width: 560px;">
+
+        <h3>Experience</h3>
+        <div style="display: flex; align-items: center; margin: 16px;">
+          <img src="../assets/capturis.jpg" style="width: 64px;"/>
+          <div style="margin-left: 32px; display: flex; flex-direction: column">
+            <h4 style="margin: 0;">Software Developer</h4>
+            <span class="primary-text-color">Capturis - a Conservice company</span>
+            <span class="mat-caption">(2015 - Present)</span>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 32px">Education</h3>
+        <div style="margin: 16px; display: flex; align-items: center;">
+          <img src="../assets/dsu.jpg" style="height: 64px;"/>
+          <div style="margin-left: 32px; display: flex; flex-direction: column">
+            <h4 style="margin: 0;">Bachelor's Degree in Computer Science</h4>
+            <span class="primary-text-color">Dickinson State University</span>
+            <span class="mat-caption">(2015 - 2017)</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; margin: 16px;">
+          <img src="../assets/bsc.jpg" style="height: 64px;"/>
+          <div style="margin-left: 32px; display: flex; flex-direction: column">
+            <h4 style="margin: 0;">Associate's Degree in Computer Science</h4>
+            <span class="primary-text-color">Bismarck State College</span>
+            <span class="mat-caption">(2013 - 2015)</span>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 32px">Certificates</h3>
+        <div style="display: flex; align-items: center; margin: 16px;">
+          <img src="../assets/google_design.jpg" style="height: 64px;"/>
+          <div style="margin-left: 32px; display: flex; flex-direction: column">
+            <h4 style="margin: 0;">Google UX Design Professional Certificate</h4>
+            <span class="primary-text-color">Coursera</span>
+            <span class="mat-caption">(In Progress)</span>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 32px">Reading List</h3>
+
+        <div *ngIf="books$ | async as books">
+          <div *ngFor="let book of books" style="margin: 24px 16px; display: flex; align-items: flex-start; justify-content: flex-start">
+            <img [src]="book.thumbnail_url" style="margin-right: 32px; width: 96px;" />
+            <div>
+              <h4 style="margin: 0; display: inline-block">{{book.title}}</h4>
+              <span class="mat-caption">&nbsp; by {{book.author}}</span>
+              <p style="margin-top: 12px;">{{book.description}}</p>
+                <button mat-stroked-button color="primary" (click)="goTo(book.link)">
+                  <div style="display: flex; align-items: center;">
+                    View on Amazon
+                    <fa-icon style="margin-left: 8px; transform: translateY(1px)" [icon]="amazon"></fa-icon>
+                  </div>
+                </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  <section #contact class="section primary-color">
+    <div class="section-header">
+      <h2>
+        Contact
+      </h2>
+    </div>
+    <form fxLayout="column" fxLayoutAlign="flex-start stretch" style="min-width: 256px">
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Name</mat-label>
+        <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Message</mat-label>
+        <textarea matInput [(ngModel)]="message" [ngModelOptions]="{standalone: true}"></textarea>
+      </mat-form-field>
+      <button mat-button (click)="sendContactMessage()">
+        <mat-icon>send</mat-icon>
+        Send
+      </button>
+    </form>
+    <footer style="padding: 32px;">
+      <span class="mat-caption">Copyright © Levi Barker 2021</span>
+    </footer>
+  </section>
+  <button matTooltip="Scroll to top" mat-fab id="home-nav-button" [class.active]="showHomeNavButton" (click)="scrollToElement(nav)">
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
+
+  </main>

@@ -7,13 +7,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import {Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   showHomeNavButton: boolean = false;
   twitter = faTwitter;
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
 
   showCode: boolean = false;
 
-  constructor(private firestore: AngularFirestore){}
+  constructor(private firestore: AngularFirestore, private router: Router){}
 
   appCards: any[] = [
     {
@@ -46,12 +47,12 @@ export class AppComponent implements OnInit {
 
   uxCards: any[] = [
     {
-      title: 'Photography Pricing Calculator',
-      description: 'Simple app for pricing out freelance photography.',
+      title: 'Mighty Missouri Coffee App',
+      description: 'UX case study for Mighty Missouri Coffee Company',
       imageSrc: '../assets/Artboard 1.png',
-      imageAlt: 'Photography Pricing Calculator App',
+      imageAlt: 'Mighty Missouri Coffee App',
       clickCallback: () => {
-        alert('clicked');
+        this.router.navigate(['./article/case-study-1']);
       }
     }
   ]
@@ -64,6 +65,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.getBooks();
+    this.getProjects();
   }
 
   toggleShowCode(){
@@ -87,6 +89,11 @@ export class AppComponent implements OnInit {
     this.books$ = this.firestore.collection('books').valueChanges().pipe(take(1));
   }
 
+  projects$: Observable<any> | null = null;
+  getProjects(){
+    this.projects$ = this.firestore.collection('projects').valueChanges().pipe(take(1));
+  }
+
   onContainerScroll(event: any){
     this.showHomeNavButton = event.target.scrollTop;
   }
@@ -108,6 +115,14 @@ export class AppComponent implements OnInit {
     this.name = '';
     this.email = '';
     this.message = '';
+  }
+
+  goToLink(link: any){
+    if(link.routerLink){
+      this.router.navigate([`${link.routerLink}`]);
+    } else {
+      window.open(link.url, '_blank');
+    }
   }
 
 }
