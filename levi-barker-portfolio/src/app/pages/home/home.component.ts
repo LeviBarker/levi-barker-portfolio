@@ -94,7 +94,13 @@ export class HomeComponent implements OnInit {
     this.projects$ = this.firestore.collection('projects').valueChanges().pipe(take(1));
   }
 
+
+  showNavShadow: boolean = false;
+
   onContainerScroll(event: any){
+
+    this.showNavShadow = event.target.scrollTop;
+
     this.showHomeNavButton = event.target.scrollTop;
   }
 

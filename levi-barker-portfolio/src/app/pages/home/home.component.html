@@ -27,43 +27,43 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <nav #nav id="main-nav" [class.mat-elevation-z3]="showNavShadow" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="16px">
+        <button mat-icon-button fxHide fxShow.xs (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="logo-text">levi<span class="primary-text-color">barker</span>.com</span>
+      </div>
+      <div #links class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
+        <button mat-button (click)="scrollToElement(portfolio)">
+          Portfolio
+        </button>
+        <button mat-button (click)="scrollToElement(about)">
+          About
+        </button>
+        <button mat-button (click)="scrollToElement(contact)">
+          Contact
+        </button>
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="resumeMenu">
+          <span class="button-text-with-icon right">Resume/CV</span>
+          <mat-icon>launch</mat-icon>
+        </button>
+        <mat-menu #resumeMenu="matMenu">
+          <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" (click)="goTo('https://www.linkedin.com/in/barkerlevi')">
+            <img style="height: 16px;" src="../assets/LI-In-Bug.png"/>
+            <span>Linkedin</span>
+          </button>
+          <button disabled mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+            <img style="height: 16px;" src="../assets/PDF_24.png"/>
+            <span>PDF Resume (Coming Soon)</span>
+          </button>
+        </mat-menu>
+      </div>
+    </nav>
     <main id="inner-app-container" (scroll)="onContainerScroll($event)">
-      <section id="hero" fxLayout="column" fxLayoutAlign="flex-start center">
+      <section #firstHero id="hero" fxLayout="column" fxLayoutAlign="flex-start center">
         <img src="../assets/Asset 1left.svg" style="height: 100%; position: absolute; left: -32px; bottom: -32px"/>
         <img src="../assets/Asset 2right.svg" fxHide.xs style="height: 100%; position: absolute; right: -32px; bottom: -32px"/>
-        <nav fxFlex="64px" #nav id="main-nav" fxLayout="row" fxLayoutAlign="space-between center">
-          <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="16px">
-            <button mat-icon-button fxHide fxShow.xs (click)="sidenav.toggle()">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <span class="logo-text">levi<span class="primary-text-color">barker</span>.com</span>
-          </div>
-          <div #links class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
-            <button mat-button (click)="scrollToElement(portfolio)">
-              Portfolio
-            </button>
-            <button mat-button (click)="scrollToElement(about)">
-              About
-            </button>
-            <button mat-button (click)="scrollToElement(contact)">
-              Contact
-            </button>
-            <button mat-stroked-button color="primary" [matMenuTriggerFor]="resumeMenu">
-              <span class="button-text-with-icon right">Resume/CV</span>
-              <mat-icon>launch</mat-icon>
-            </button>
-            <mat-menu #resumeMenu="matMenu">
-              <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" (click)="goTo('https://www.linkedin.com/in/barkerlevi')">
-                <img style="height: 16px;" src="../assets/LI-In-Bug.png"/>
-                <span>Linkedin</span>
-              </button>
-              <button disabled mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
-                <img style="height: 16px;" src="../assets/PDF_24.png"/>
-                <span>PDF Resume (Coming Soon)</span>
-              </button>
-            </mat-menu>
-          </div>
-        </nav>
         <div fxFlex="auto" fxLayout="column" fxLayoutAlign="center center" style="position: relative;">
           <div fxLayout="row" fxLayout.xs="column" style="padding: 0 32px;" fxLayoutAlign="flex-start center" fxLayoutGap="36px" >
             <img *ngIf="!showCode" style="border-radius: 50%; width: 128px; box-shadow: 0 4px 8px rgba(128, 128, 128, 0.486)" src="../assets/portrait.jpg"/>
@@ -92,8 +92,8 @@
                   <fa-icon class="twitter" [icon]="twitter" size="2x" (click)="goTo('https://twitter.com/barkerlevi4')"></fa-icon>
                   <fa-icon class="instagram" [icon]="instagram" size="2x" (click)="goTo('https://www.instagram.com/levibark4/')"></fa-icon>
                   <fa-icon class="dribbble" [icon]="dribbble" size="2x" (click)="goTo('https://dribbble.com/LeviBarker')"></fa-icon>
-                  <fa-icon class="medium" [icon]="codepen" size="2x" (click)="goTo('https://medium.com/@dev.levibarker')"></fa-icon>
-                  <fa-icon class="stackoverflow" [icon]="stackOverflow" size="2x" (click)="goTo('https://medium.com/@dev.levibarker')"></fa-icon>
+                  <fa-icon class="medium" [icon]="codepen" size="2x" (click)="goTo('https://codepen.io/LevyB44')"></fa-icon>
+                  <fa-icon class="stackoverflow" [icon]="stackOverflow" size="2x" (click)="goTo('https://stackoverflow.com/users/3878455/levi-barker')"></fa-icon>
                 </div>
             </div>
           </div>
@@ -250,7 +250,7 @@
           <span class="mat-caption">Copyright © Levi Barker 2021</span>
         </footer>
       </section>
-      <button matTooltip="Scroll to top" mat-fab id="home-nav-button" [class.active]="showHomeNavButton" (click)="scrollToElement(nav)">
+      <button matTooltip="Scroll to top" mat-fab id="home-nav-button" [class.active]="showHomeNavButton" (click)="scrollToElement(firstHero)">
         <mat-icon>keyboard_arrow_up</mat-icon>
       </button>
 

@@ -83,6 +83,9 @@ $theme: mat-light-theme((color: (primary: $primary,
   padding: 0 32px;
   box-sizing: border-box;
   z-index: 999;
+  transition-duration: 400ms;
+  // position: absolute;
+  margin-right: 16px;
 }
 
 .section-header {
@@ -110,8 +113,13 @@ $theme: mat-light-theme((color: (primary: $primary,
 }
 
 #inner-app-container{
-  height: 100vh;
+  display: block !important;
+  height: calc(100% - 64px);
   overflow: auto;
+}
+
+.mat-sidenav-container{
+  height: 100vh;
 }
 
 #hero{
