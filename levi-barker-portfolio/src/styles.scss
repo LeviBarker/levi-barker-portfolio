@@ -114,7 +114,7 @@ $theme: mat-light-theme((color: (primary: $primary,
 
 #inner-app-container{
   display: block !important;
-  height: calc(100% - 64px);
+  height: 100%;
   overflow: auto;
 }
 
@@ -217,5 +217,12 @@ p {
   transition: transform 200ms ease-in-out;
   &.active{
     transform: scale(1);
+  }
+}
+
+markdown{
+  width: 100%;
+  img{
+    width: 100% !important;
   }
 }

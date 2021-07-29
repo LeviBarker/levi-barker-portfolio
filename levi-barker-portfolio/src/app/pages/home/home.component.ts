@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import {debounce, throttle} from 'helpful-decorators';
 
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram, faDribbble, faBehance, faMedium, faAmazon, faCodepen, faStackOverflow} from '@fortawesome/free-brands-svg-icons';
@@ -95,12 +96,8 @@ export class HomeComponent implements OnInit {
   }
 
 
-  showNavShadow: boolean = false;
 
   onContainerScroll(event: any){
-
-    this.showNavShadow = event.target.scrollTop;
-
     this.showHomeNavButton = event.target.scrollTop;
   }
 
@@ -129,6 +126,19 @@ export class HomeComponent implements OnInit {
     } else {
       window.open(link.url, '_blank');
     }
+  }
+
+  cardWidth: number = 220;
+
+  @throttle(600)
+  prev(scrollSection: any) {
+    scrollSection.scrollLeft -= this.cardWidth;
+
+  }
+
+  @throttle(600)
+  next(scrollSection: any) {
+    scrollSection.scrollLeft += this.cardWidth;
   }
 
 }

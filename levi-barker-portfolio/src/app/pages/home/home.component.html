@@ -27,40 +27,40 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <nav #nav id="main-nav" [class.mat-elevation-z3]="showNavShadow" fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="16px">
-        <button mat-icon-button fxHide fxShow.xs (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span class="logo-text">levi<span class="primary-text-color">barker</span>.com</span>
-      </div>
-      <div #links class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
-        <button mat-button (click)="scrollToElement(portfolio)">
-          Portfolio
-        </button>
-        <button mat-button (click)="scrollToElement(about)">
-          About
-        </button>
-        <button mat-button (click)="scrollToElement(contact)">
-          Contact
-        </button>
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="resumeMenu">
-          <span class="button-text-with-icon right">Resume/CV</span>
-          <mat-icon>launch</mat-icon>
-        </button>
-        <mat-menu #resumeMenu="matMenu">
-          <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" (click)="goTo('https://www.linkedin.com/in/barkerlevi')">
-            <img style="height: 16px;" src="../assets/LI-In-Bug.png"/>
-            <span>Linkedin</span>
-          </button>
-          <button disabled mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
-            <img style="height: 16px;" src="../assets/PDF_24.png"/>
-            <span>PDF Resume (Coming Soon)</span>
-          </button>
-        </mat-menu>
-      </div>
-    </nav>
     <main id="inner-app-container" (scroll)="onContainerScroll($event)">
+      <nav #nav id="main-nav" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="16px">
+          <button mat-icon-button fxHide fxShow.xs (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="logo-text">levi<span class="primary-text-color">barker</span>.com</span>
+        </div>
+        <div #links class="links" fxHide.xs fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
+          <button mat-button (click)="scrollToElement(portfolio)">
+            Portfolio
+          </button>
+          <button mat-button (click)="scrollToElement(about)">
+            About
+          </button>
+          <button mat-button (click)="scrollToElement(contact)">
+            Contact
+          </button>
+          <button mat-stroked-button color="primary" [matMenuTriggerFor]="resumeMenu">
+            <span class="button-text-with-icon right">Resume/CV</span>
+            <mat-icon>launch</mat-icon>
+          </button>
+          <mat-menu #resumeMenu="matMenu">
+            <button mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px" (click)="goTo('https://www.linkedin.com/in/barkerlevi')">
+              <img style="height: 16px;" src="../assets/LI-In-Bug.png"/>
+              <span>Linkedin</span>
+            </button>
+            <button disabled mat-menu-item fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="8px">
+              <img style="height: 16px;" src="../assets/PDF_24.png"/>
+              <span>PDF Resume (Coming Soon)</span>
+            </button>
+          </mat-menu>
+        </div>
+      </nav>
       <section #firstHero id="hero" fxLayout="column" fxLayoutAlign="flex-start center">
         <img src="../assets/Asset 1left.svg" style="height: 100%; position: absolute; left: -32px; bottom: -32px"/>
         <img src="../assets/Asset 2right.svg" fxHide.xs style="height: 100%; position: absolute; right: -32px; bottom: -32px"/>
@@ -111,7 +111,7 @@
             <span>Portfolio</span>
           </h2>
           <div fxLayout="row wrap" fxLayoutAlign="center flex-start">
-            <app-portfolio-card style="padding: 8px;" *ngFor="let card of (projects$ | async)" [title]="card.title" [imageSrc]="card.headerImgURL"
+            <app-portfolio-card style="padding: 8px;" *ngFor="let card of (projects$ | async)" [title]="card.title" [imageSrc]="card.headerImgUrl"
             [imageAlt]="'test'" [description]="card.summary">
             <button mat-stroked-button color="primary" *ngFor="let link of card.links" (click)="goToLink(link)">
               <mat-icon *ngIf="link.icon" style="margin-right: 8px;">{{link.icon}}</mat-icon>
@@ -163,11 +163,11 @@
 
             <h3>Experience</h3>
             <div style="display: flex; align-items: center; margin: 16px;">
-              <img src="../assets/capturis.jpg" style="width: 64px;"/>
+              <img src="../assets/capturis_conservice.svg" style="width: 64px;"/>
               <div style="margin-left: 32px; display: flex; flex-direction: column">
                 <h4 style="margin: 0;">Software Developer</h4>
                 <span class="primary-text-color">Capturis - a Conservice company</span>
-                <span class="mat-caption">(2015 - Present)</span>
+                <span class="mat-caption">2016 - Present</span>
               </div>
             </div>
 
@@ -177,7 +177,7 @@
               <div style="margin-left: 32px; display: flex; flex-direction: column">
                 <h4 style="margin: 0;">Bachelor's Degree in Computer Science</h4>
                 <span class="primary-text-color">Dickinson State University</span>
-                <span class="mat-caption">(2015 - 2017)</span>
+                <span class="mat-caption">2015 - 2017</span>
               </div>
             </div>
             <div style="display: flex; align-items: center; margin: 16px;">
@@ -185,37 +185,56 @@
               <div style="margin-left: 32px; display: flex; flex-direction: column">
                 <h4 style="margin: 0;">Associate's Degree in Computer Science</h4>
                 <span class="primary-text-color">Bismarck State College</span>
-                <span class="mat-caption">(2013 - 2015)</span>
+                <span class="mat-caption">2013 - 2015</span>
               </div>
             </div>
 
             <h3 style="margin-top: 32px">Certificates</h3>
-            <div style="display: flex; align-items: center; margin: 16px;">
-              <img src="../assets/google_design.jpg" style="height: 64px;"/>
+            <div style="display: flex; align-items: center; margin: 16px; cursor: pointer;" (click)="goToLink({url: 'https://www.credly.com/badges/0dec6937-f6a6-48e9-aaf7-bc79fa6a2630/public_url'})">
+              <img src="https://images.credly.com/size/220x220/images/35584a9a-ba2d-4199-8aff-9f699b0d6bda/Google_Certs_UX.png" style="height: 64px;"/>
               <div style="margin-left: 32px; display: flex; flex-direction: column">
-                <h4 style="margin: 0;">Google UX Design Professional Certificate</h4>
+                <h4 style="margin: 0;">Google UX Design Certificate</h4>
                 <span class="primary-text-color">Coursera</span>
-                <span class="mat-caption">(In Progress)</span>
+                <span class="mat-caption">2021</span>
               </div>
             </div>
 
             <h3 style="margin-top: 32px">Reading List</h3>
 
-            <div *ngIf="books$ | async as books">
-              <div *ngFor="let book of books" style="margin: 24px 16px; display: flex; align-items: flex-start; justify-content: flex-start">
-                <img [src]="book.thumbnail_url" style="margin-right: 32px; width: 96px;" />
-                <div>
-                  <h4 style="margin: 0; display: inline-block">{{book.title}}</h4>
-                  <span class="mat-caption">&nbsp; by {{book.author}}</span>
-                  <p style="margin-top: 12px;">{{book.description}}</p>
-                    <button mat-stroked-button color="primary" (click)="goTo(book.link)">
-                      <div style="display: flex; align-items: center;">
-                        View on Amazon
-                        <fa-icon style="margin-left: 8px; transform: translateY(1px)" [icon]="amazon"></fa-icon>
-                      </div>
-                    </button>
-                </div>
+            <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 32px;">
+              <div fxLayout="row" *ngIf="books$ | async as books" style="width: calc({{cardWidth}}px + 76px + 76px - 16px - 16px)">
+                <section fxFlex="64px;" fxLayoutAlign="center center">
+                <button color="primary" mat-mini-fab (click)="prev(scrollSection)">
+                <mat-icon>chevron_left</mat-icon>
+              </button>
+              </section>
+              <section fxLayout="row" #scrollSection style="width: 100%; overflow: hidden; scroll-behavior: smooth">
+                <div *ngFor="let book of books" [fxFlex]="cardWidth + 'px'" style="padding: 16px;">
+                <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
+                  <img [src]="book.thumbnail_url" style="width: 128px;" />
+                  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px" style="width: 128px;">
+                    <div>
+                      <h4 style="margin: 0; display: inline-block">{{book.title}}</h4>
+                    <div class="mat-caption">by {{book.author}}</div>
+                    </div>
+                    <!-- <p fxShow fxHide.xs style="margin-top: 12px;">{{book.description}}</p> -->
+                      <button mat-stroked-button color="primary" (click)="goTo(book.link)">
+                        <div style="display: flex; align-items: center;">
+                          View on Amazon
+                          <fa-icon style="margin-left: 8px; transform: translateY(1px)" [icon]="amazon"></fa-icon>
+                        </div>
+                      </button>
+                  </div>
+                </div></div>
+
+              </section>
+              <section fxFlex="64px;" fxLayoutAlign="center center">
+                <button color="primary" mat-mini-fab (click)="next(scrollSection)">
+                <mat-icon>chevron_right</mat-icon>
+              </button>
+              </section>
               </div>
+
             </div>
 
           </div>
@@ -250,7 +269,7 @@
           <span class="mat-caption">Copyright © Levi Barker 2021</span>
         </footer>
       </section>
-      <button matTooltip="Scroll to top" mat-fab id="home-nav-button" [class.active]="showHomeNavButton" (click)="scrollToElement(firstHero)">
+      <button matTooltip="Scroll to top" mat-fab id="home-nav-button" [class.active]="showHomeNavButton" (click)="scrollToElement(nav)">
         <mat-icon>keyboard_arrow_up</mat-icon>
       </button>
 
